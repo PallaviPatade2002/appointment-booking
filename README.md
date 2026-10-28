@@ -2,6 +2,16 @@
 
 Online appointment booking for salons, clinics, gyms and classes. One Node/Express + SQLite API, a React website (customers and owner) and a Flutter mobile app (customers).
 
+## Screenshots
+
+| Login | Booking |
+| --- | --- |
+| ![Login](docs/login.png) | ![Booking](docs/booking.png) |
+
+| Owner: working hours | Owner: monthly report | Mobile |
+| --- | --- | --- |
+| ![Hours](docs/admin-hours.png) | ![Report](docs/admin-report.png) | ![Mobile](docs/mobile.png) |
+
 ## Features
 
 - **Customer (website + app):** sign up / login, pick a service, pick a day (next 21 days), pick from live free time slots, add a note, see and cancel bookings
@@ -35,6 +45,14 @@ Set `JWT_SECRET` in production. Tests: `cd backend && npm test`, `cd mobile && f
 
 `cd frontend && npm run build`: the backend then serves the website from the same server as the API.
 Android APK: `cd mobile && flutter build apk --dart-define=API_URL=https://your-server.com`.
+
+## Deploy (free, Render)
+
+1. Render.com → New → Blueprint → select this repo (`render.yaml` is picked up automatically).
+2. Open the URL Render gives you. One server serves both the API and the website.
+3. Point the app at it: `flutter build apk --dart-define=API_URL=https://<your-app>.onrender.com`.
+
+Free plan caveats: the app sleeps after ~15 min idle (first load takes ~30-60 s) and the SQLite file resets on restart; `AUTO_SEED=1` refills the demo users and services on every start. For real use, take a paid plan with a persistent disk.
 
 ## API
 
